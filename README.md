@@ -1,5 +1,5 @@
 # <ins>*M*</ins>icrobal <ins>*Ribo*</ins>some Profiling Analysis (<ins>*mRibo*</ins>)
-Wrapper for running metagene analysis on microbial (Bacteria and Archaea) ribosome profiling data using modified scripts from [Dr. Fuad Mohammad](https://github.com/dgelsin/2018_Bacterial_Pipeline_riboseq)
+Wrapper for running metagene analysis on microbial (Bacteria and Archaea) ribosome profiling data using modified scripts from [Dr. Fuad Mohammad](https://github.com/dgelsin/2018_Bacterial_Pipeline_riboseq).
 
 #### REQUIREMENTS:
 ```pip install DateTime
