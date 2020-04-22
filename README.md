@@ -1,5 +1,5 @@
 # <ins>*M*</ins>icrobal <ins>*Ribo*</ins>some Profiling Analysis (<ins>*mRibo*</ins>)
-Wrapper for running metagene analysis on microbial (Bacteria and Archaea) ribosome profiling data using modified scripts from Dr. Fuad Mohammad https://github.com/dgelsin/2018_Bacterial_Pipeline_riboseq
+Wrapper for running metagene analysis on microbial (Bacteria and Archaea) ribosome profiling data using modified scripts from [Dr. Fuad Mohammad](https://github.com/dgelsin/2018_Bacterial_Pipeline_riboseq)
 
 #### REQUIREMENTS:
 ```pip install DateTime
@@ -39,8 +39,8 @@ Example:
 
 #### Acknowledgements
 
-Author of pipeline: Diego Rivera Gelsinger
+Author of pipeline: [Diego Rivera Gelsinger](https://github.com/dgelsin)
 
-Institution: Johns Hopkins, Department of Cell, Molecular, Developmental Biology, and Biophysics
+Institution: Johns Hopkins, [Department of Cell, Molecular, Developmental Biology, and Biophysics](https://cmdb.jhu.edu/)
 
-For general feedback you can contact me at dgelsin1@jhu.edu.
+For general feedback you can contact me at [dgelsin1@jhu.edu](mailto:dgelsin1@jhu.edu). 
