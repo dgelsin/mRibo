@@ -35,3 +35,12 @@ Example:
 Example:
 
 ```python main_wrapper.py annotations/Volcanii_dict_for_pause```
+
+
+#### Acknowledgements
+
+Author of pipeline: Diego Rivera Gelsinger
+
+Institution: Johns Hopkins, Department of Cell, Molecular, Developmental Biology, and Biophysics
+
+For general feedback you can contact me at dgelsin1@jhu.edu.
