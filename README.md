@@ -8,9 +8,9 @@ git clone https://github.com/dgelsin/mRibo
 ```
 mRibo can then be executed via ./mRibo/mRibo/bin/mRibo
 
-To make it executable from anywhere:
+then to make it executable from anywhere:
 ```
-cp mRibo/mRibo/bin/mRibo /usr/local/bin/
+cp mRibo/mRibo/bin/* /usr/local/bin/
 ```
 
 ### REQUIREMENTS:
@@ -38,6 +38,7 @@ mRibo core options:
 	-D INT		genome annotation dictionary file
 	-C STR      	user name
 	-M STR      	name of microbe being analyzed
+	-o STR          output directory
 
 Additional options:
 	-I INT		min read length size for meta-gene analysis (default=10)
@@ -61,7 +62,7 @@ Additional options:
 
 Example:
 ```
-mRibo -U /Users/DRG/Desktop/mRibo/mRibo/practice_files/FASTQ/DG1_subsample -R /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/rRNA.fa -g /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/genome.fa -a /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii.gff -d /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii_dict_for_pause -C DG -M Volcanii
+mRibo -U /Users/DRG/Desktop/mRibo/mRibo/practice_files/FASTQ/DG1_subsample -R /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/rRNA.fa -g /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/genome.fa -a /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii.gff -d /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii_dict_for_pause -C DG -M Volcanii -o mRibo_run1
 ```
 
 
