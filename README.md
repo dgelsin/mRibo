@@ -17,7 +17,7 @@ conda install bowtie
 #### GENERAL USAGE OF mRibo:
 
 ```
-mRibo -U reads.fastq -R rRNA.fa -g genome.fa -a genome.gff -d genome_dict -S alignment_directory -C name_of_user -M name_of_microbe
+mRibo -U reads.fastq -R rRNA.fa -g genome.fa -a genome.gff -d genome_dict -C name_of_user -M name_of_microbe
 
 mRibo core options:
 	-U STR		ribosome profiling reads
@@ -25,7 +25,6 @@ mRibo core options:
 	-g STR		genome fasta file
 	-a STR		genome annotation gtf/gff file
 	-D INT		genome annotation dictionary file
-	-S STR      	directory where sam alignment file is located
 	-C STR      	user name
 	-M STR      	name of microbe being analyzed
 
@@ -51,26 +50,35 @@ Additional options:
 
 Example:
 
-```mRibo -U /Users/DRG/Desktop/mRibo/mRibo/practice_files/FASTQ/DG1_subsample -R /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/rRNA.fa -g /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/genome.fa -a /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii.gff -d /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii_dict_for_pause -C DG -M Volcanii```
+```
+mRibo -U /Users/DRG/Desktop/mRibo/mRibo/practice_files/FASTQ/DG1_subsample -R /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/rRNA.fa -g /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/genome.fa -a /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii.gff -d /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii_dict_for_pause -C DG -M Volcanii
+```
 
 
 #### FOR ONLY GENERATING DENSITY FILES:
 
-```python density_wrapper.py [FASTQ_directory] [GFF_file.gff] [GFF_DICTIONARY_file] [ALIGNMENT_directory] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES]```
+```
+python density_wrapper.py [FASTQ_directory] [GFF_file.gff] [GFF_DICTIONARY_file] [ALIGNMENT_directory] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES]
+```
 
 Example:
 
-```python density_wrapper.py FASTQ/ annotations/Volcanii.gff annotations/Volcanii_dict_for_pause alignment/ DG Volcanii 10 40 8 4```
-
+```
+python density_wrapper.py FASTQ/ annotations/Volcanii.gff annotations/Volcanii_dict_for_pause alignment/ DG Volcanii 10 40 8 4
+```
 
 
 #### FOR ONLY METAGENE ANALYSIS AND PLOTTING:
 
-```python main_wrapper.py [GFF_DICTIONARY_file] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES] [LENGTH_UPSTREAM] [LENGTH_DOWNSTREAM] [ALIGNMENT_STYLE] [DENSITY_STYLE] [WEIGHT_STYLE] [DISTANCE_GENES] [RPKM_THRESHOLD] [YMAX_AVGGENES] [ASITE_SHIFT] [PAUSE_STYLE] [YMAX_PAUSE]```
+```
+python main_wrapper.py [GFF_DICTIONARY_file] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES] [LENGTH_UPSTREAM] [LENGTH_DOWNSTREAM] [ALIGNMENT_STYLE] [DENSITY_STYLE] [WEIGHT_STYLE] [DISTANCE_GENES] [RPKM_THRESHOLD] [YMAX_AVGGENES] [ASITE_SHIFT] [PAUSE_STYLE] [YMAX_PAUSE]
+```
 
 Example:
 
-```python main_wrapper.py annotations/Volcanii_dict_for_pause DG Volcanii 10 40 8 4 50 200 3 rpm yes 50 10 10 -11 aa 10```
+```
+python main_wrapper.py annotations/Volcanii_dict_for_pause DG Volcanii 10 40 8 4 50 200 3 rpm yes 50 10 10 -11 aa 10
+```
 
 
 #### Acknowledgements
