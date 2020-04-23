@@ -1,7 +1,7 @@
 # <ins>*M*</ins>icrobal <ins>*Ribo*</ins>some Profiling Analysis (<ins>*mRibo*</ins>)
 Wrapper for running metagene analysis on microbial (Bacteria and Archaea) ribosome profiling data using modified scripts from [Dr. Fuad Mohammad](https://github.com/dgelsin/2018_Bacterial_Pipeline_riboseq).
 
-#### REQUIREMENTS:
+### REQUIREMENTS:
 ```pip install DateTime
 pip install multiprocess
 pip install bcbio-gff
@@ -14,7 +14,7 @@ pip install -U scikit-learn
 conda install bowtie
 ```
 
-#### GENERAL USAGE OF mRibo:
+### GENERAL USAGE OF mRibo:
 
 ```
 mRibo -U reads.fastq -R rRNA.fa -g genome.fa -a genome.gff -d genome_dict -C name_of_user -M name_of_microbe
@@ -55,7 +55,7 @@ mRibo -U /Users/DRG/Desktop/mRibo/mRibo/practice_files/FASTQ/DG1_subsample -R /U
 ```
 
 
-#### FOR ONLY GENERATING DENSITY FILES:
+### FOR ONLY GENERATING DENSITY FILES:
 
 ```
 python density_wrapper.py [FASTQ_directory] [GFF_file.gff] [GFF_DICTIONARY_file] [ALIGNMENT_directory] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES]
@@ -68,7 +68,7 @@ python density_wrapper.py FASTQ/ annotations/Volcanii.gff annotations/Volcanii_d
 ```
 
 
-#### FOR ONLY METAGENE ANALYSIS AND PLOTTING:
+### FOR ONLY METAGENE ANALYSIS AND PLOTTING:
 
 ```
 python main_wrapper.py [GFF_DICTIONARY_file] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES] [LENGTH_UPSTREAM] [LENGTH_DOWNSTREAM] [ALIGNMENT_STYLE] [DENSITY_STYLE] [WEIGHT_STYLE] [DISTANCE_GENES] [RPKM_THRESHOLD] [YMAX_AVGGENES] [ASITE_SHIFT] [PAUSE_STYLE] [YMAX_PAUSE]
@@ -81,7 +81,7 @@ python main_wrapper.py annotations/Volcanii_dict_for_pause DG Volcanii 10 40 8 4
 ```
 
 
-#### Acknowledgements
+### Acknowledgements
 
 Author of pipeline: [Diego Rivera Gelsinger](https://github.com/dgelsin)
 
