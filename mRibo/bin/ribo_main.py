@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 from datetime import datetime
 from multiprocessing import Process
 import os, time

@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 import csv
 from Bio.Seq import Seq
 import os 
