@@ -26,7 +26,7 @@ conda install bowtie
 
 ### GENERAL USAGE OF mRibo:
 ```
-mRibo -U reads.fastq -R rRNA.fa -g genome.fa -a genome.gff -d genome_dict -C name_of_user -M name_of_microbe
+mRibo -U reads.fastq -R rRNA.fa -g genome.fa -a genome.gff -d genome_dict -C name_of_user -M name_of_microbe -o output_directory_name
 
 mRibo core options:
 	-U STR		ribosome profiling reads
@@ -66,23 +66,23 @@ mRibo -U /Users/DRG/Desktop/mRibo/mRibo/practice_files/FASTQ/DG1_subsample -R /U
 
 ### FOR ONLY GENERATING DENSITY FILES:
 ```
-python density_wrapper.py [FASTQ_directory] [GFF_file.gff] [GFF_DICTIONARY_file] [ALIGNMENT_directory] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES]
+density_wrapper.py [FASTQ_directory] [GFF_file.gff] [GFF_DICTIONARY_file] [ALIGNMENT_directory] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES]
 ```
 
 Example:
 ```
-python density_wrapper.py FASTQ/ annotations/Volcanii.gff annotations/Volcanii_dict_for_pause alignment/ DG Volcanii 10 40 8 4
+density_wrapper.py input/FASTQ/ annotations/Volcanii.gff annotations/Volcanii_dict_for_pause input/alignment/ DG Volcanii 10 40 8 4
 ```
 
 
 ### FOR ONLY METAGENE ANALYSIS AND PLOTTING:
 ```
-python main_wrapper.py [GFF_DICTIONARY_file] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES] [LENGTH_UPSTREAM] [LENGTH_DOWNSTREAM] [ALIGNMENT_STYLE] [DENSITY_STYLE] [WEIGHT_STYLE] [DISTANCE_GENES] [RPKM_THRESHOLD] [YMAX_AVGGENES] [ASITE_SHIFT] [PAUSE_STYLE] [YMAX_PAUSE]
+main_wrapper.py [GFF_DICTIONARY_file] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES] [LENGTH_UPSTREAM] [LENGTH_DOWNSTREAM] [ALIGNMENT_STYLE] [DENSITY_STYLE] [WEIGHT_STYLE] [DISTANCE_GENES] [RPKM_THRESHOLD] [YMAX_AVGGENES] [ASITE_SHIFT] [PAUSE_STYLE] [YMAX_PAUSE]
 ```
 
 Example:
 ```
-python main_wrapper.py annotations/Volcanii_dict_for_pause DG Volcanii 10 40 8 4 50 200 3 rpm yes 50 10 10 -11 aa 10
+main_wrapper.py annotations/Volcanii_dict_for_pause DG Volcanii 10 40 8 4 50 200 3 rpm yes 50 10 10 -11 aa 10
 ```
 
 
