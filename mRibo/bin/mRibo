@@ -227,7 +227,7 @@ else
 
 mkdir input/alignment
 mv input/bowtie_genome_alignment/genome_alignment.sam input/alignment/${CREATOR}1_match.sam
-mkdir FASTQ
+mkdir input/FASTQ
 cp input/bowtie_rRNA_alignment/rRNA_filtered_reads.fq input/FASTQ/${CREATOR}1  
 
 if [[ -s output/reads/density/density/DG1/minus ]]; then
