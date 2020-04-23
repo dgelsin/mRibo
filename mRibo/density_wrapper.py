@@ -6,10 +6,17 @@ import ribo_analysis
 import ribo_plot
 import sys
 
+creator=str(sys.argv[5])
+microbe=str(sys.argv[6])
+min_length=int(sys.argv[7])
+max_length=int(sys.argv[8])
+threads=int(sys.argv[9])
+cores=int(sys.argv[10])
+
 '''Settings and Inputs'''
 
-library_creator = 'DG'        #FM, KS, CW, Menkin, Li, etc... (initial of who made it)
-organism        = 'Volcanii'      #Coli, Subtilis, Tuberculosis etc...
+library_creator = creator        #FM, KS, CW, Menkin, Li, etc... (initial of who made it)
+organism        = microbe      #Coli, Subtilis, Tuberculosis etc...
 
 inputs = {
     
@@ -24,8 +31,8 @@ inputs = {
     'run_readQC'   : 'no',
     
     # cuttoff for readsize and quality for filtering and density
-    'minlength'    : 10,
-    'maxlength'    : 40,
+    'minlength'    : min_length,
+    'maxlength'    : max_length,
     'phred_cutoff' : 10,
                         
     # linker-1 for FM = CTGTAGGCACCATCAATAGATCGGAAGAGCACACGTCTGAACTCCAGTCA
@@ -37,8 +44,8 @@ inputs = {
     
     # CPU information for multithreading applications, 
     'multiprocess' : 'yes',
-    'threads'      : 8,
-    'cores'        : 4, 
+    'threads'      : threads,
+    'cores'        : cores, 
     
     }
 
