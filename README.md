@@ -51,7 +51,7 @@ Additional options:
 
 Example:
 
-```mRibo -U /Users/DRG/Desktop/mRibo/mRibo/practice_files/FASTQ/DG1_subsample / -R /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/rRNA.fa / -g /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/genome.fa / -a /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii.gff / -d /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii_dict_for_pause -C DG -M Volcanii```
+```mRibo -U /Users/DRG/Desktop/mRibo/mRibo/practice_files/FASTQ/DG1_subsample \ -R /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/rRNA.fa \ -g /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/genome.fa \ -a /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii.gff \ -d /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii_dict_for_pause -C DG -M Volcanii```
 
 
 #### FOR ONLY GENERATING DENSITY FILES:
