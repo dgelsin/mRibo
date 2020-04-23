@@ -254,6 +254,7 @@ else
 	fi
 	comm "Succesfully carried out meta-gene analysis from ${CREATOR}1_match.sam."
 	if [[ $? -ne 0 ]]; then error "Failed to conduct meta-gene analysis on ${CREATOR}1_match.sam. Exiting..."; fi
+mv output $OUT
 ########################################################################################################
 ########################     sRNA DISCOVERY PIPELINE SUCCESSFULLY FINISHED!!!   ########################
 ########################################################################################################
