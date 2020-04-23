@@ -16,7 +16,8 @@ conda install bowtie
 
 #### GENERAL USAGE OF mRibo:
 
-```mRibo -U reads.fastq -R rRNA.fa -g genome.fa -a genome.gff -d genome_dict -S alignment_directory -C name_of_user -M name_of_microbe
+```
+mRibo -U reads.fastq -R rRNA.fa -g genome.fa -a genome.gff -d genome_dict -S alignment_directory -C name_of_user -M name_of_microbe
 
 mRibo core options:
 	-U STR		ribosome profiling reads
@@ -45,7 +46,8 @@ Additional options:
 	-P STR		Style in which to conduct pause score meta-gene analysis, either amino acids (aa) or codons (codon) (default=aa)
 	-Y INT		maximum value for y-axis of pause score meta-gene plot (default=0)
 
-	--version | -v	show current mRibo version```
+	--version | -v	show current mRibo version
+	```
 
 Example:
 
