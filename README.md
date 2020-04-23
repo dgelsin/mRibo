@@ -47,7 +47,7 @@ Additional options:
 	-Y INT		maximum value for y-axis of pause score meta-gene plot (default=0)
 
 	--version | -v	show current mRibo version
-	```
+```
 
 Example:
 
