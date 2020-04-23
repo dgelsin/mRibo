@@ -1,6 +1,18 @@
 # <ins>*M*</ins>icrobal <ins>*Ribo*</ins>some Profiling Analysis (<ins>*mRibo*</ins>)
 Wrapper for running metagene analysis on microbial (Bacteria and Archaea) ribosome profiling data using modified scripts from [Dr. Fuad Mohammad](https://github.com/dgelsin/2018_Bacterial_Pipeline_riboseq).
 
+### INSTALLATION:
+To install locally:
+```
+git clone https://github.com/dgelsin/mRibo
+```
+mRibo can then be executed via ./mRibo/mRibo/bin/mRibo
+
+To make it executable from anywhere:
+```
+cp mRibo/mRibo/bin/mRibo /usr/local/bin/
+```
+
 ### REQUIREMENTS:
 ```pip install DateTime
 pip install multiprocess
