@@ -138,8 +138,8 @@ elif [ ! -s $ANNOTATION ]; then
 	error "Annotation file $ANNOTATION does not exist, or is empty. Exiting."
 elif [ ! -s $DICTIONARY ]; then
 	error "Dictionary file $DICTIONARY does not exist, or is empty. Exiting."
-elif [ ! -s $OUT ]; then
-	error "Output directory is not specified. Exiting."
+#elif [ ! -s $OUT ]; then
+#	error "Output directory is not specified. Exiting."
 #elif [ ! -s $CREATOR ]; then
 #	error "User name $CREATOR format is incorrect, or is empty. Exiting."
 #elif [ ! -s $MICROBE ]; then
