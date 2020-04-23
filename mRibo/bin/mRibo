@@ -48,10 +48,10 @@ help_message () {
 
 
 
-comm () { ./bin/mribo_print_comment.py "$1" "-"; }
-error () { ./bin/mribo_print_comment.py "$1" "*"; exit 1; }
-warning () { ./bin/mribo_print_comment.py "$1" "*"; }
-announcement () { ./bin/mribo_print_comment.py "$1" "#"; }
+comm () { mribo_print_comment.py "$1" "-"; }
+error () { mribo_print_comment.py "$1" "*"; exit 1; }
+warning () { mribo_print_comment.py "$1" "*"; }
+announcement () { mribo_print_comment.py "$1" "#"; }
 
 # loading supplementary scripts
 MRIBO_PATH=$(which mRibo)
