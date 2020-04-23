@@ -152,6 +152,7 @@ fi
 
 announcement "BEGIN PIPELINE!"
 comm "setting up output folders and copying relevant information..."
+mkdir input
 #	if [ ! -d $OUT ]; then error "cannot make $OUT"; fi
 #else
 #        warning "Warning: $OUT already exists. SnapT will attempt to continue the existing progress, but it is still recommended that you clear this directory to prevent any conflicts"
@@ -184,67 +185,57 @@ else
 fi
 
 
-if [[ -s bowtie_rRNA_alignment/bowtie_rRNA_index.1.ebwt ]]; then
+if [[ -s input/bowtie_rRNA_alignment/bowtie_rRNA_index.1.ebwt ]]; then
 	comm "Looks like the bowtie rRNA index already exists in the output directory. Skipping..."
 else
 	comm "Building bowtie rRNA index"
-	mkdir bowtie_rRNA_alignment
-	cp $RRNA bowtie_rRNA_alignment/rRNA.fa
-	bowtie-build bowtie_rRNA_alignment/rRNA.fa bowtie_rRNA_alignment/bowtie_rRNA_index \
+	mkdir input/bowtie_rRNA_alignment
+	cp $RRNA input/bowtie_rRNA_alignment/rRNA.fa
+	bowtie-build input/bowtie_rRNA_alignment/rRNA.fa input/bowtie_rRNA_alignment/bowtie_rRNA_index \
 	 -p $THREADS --quiet
 	if [[ $? -ne 0 ]]; then error "bowtie rRNA index could not be build. Exiting..."; fi
 fi
 
-if [[ -s bowtie_rRNA_alignment/rRNA_alignment.sam ]]; then
+if [[ -s input/bowtie_rRNA_alignment/rRNA_alignment.sam ]]; then
 	comm "Looks like the rRNA alignment files aready exist in the output directory. Skipping..."
 else
 	comm "Aligning $READS1 to $RRNA with bowtie"
-	bowtie -v 2 -y -m 1 -a --best --strata -S -p $THREADS --un bowtie_rRNA_alignment/rRNA_filtered_reads.fq bowtie_rRNA_alignment/bowtie_rRNA_index $READS1 bowtie_rRNA_alignment/rRNA_alignment.sam
+	bowtie -v 2 -y -m 1 -a --best --strata -S -p $THREADS --un input/bowtie_rRNA_alignment/rRNA_filtered_reads.fq input/bowtie_rRNA_alignment/bowtie_rRNA_index $READS1 input/bowtie_rRNA_alignment/rRNA_alignment.sam
 	fi
 	if [[ $? -ne 0 ]]; then error "bowtie rRNA alignment failed. Exiting..."; fi
 
 
-if [[ -s bowtie_genome_alignment/bowtie_genome_index.1.ebwt ]]; then
+if [[ -s input/bowtie_genome_alignment/bowtie_genome_index.1.ebwt ]]; then
 	comm "Looks like the bowtie genome index already exists in the output directory. Skipping..."
 else
 	comm "Building bowtie genome index"
-	mkdir bowtie_genome_alignment
-	cp $GENOME bowtie_genome_alignment/genome.fa
-	bowtie-build bowtie_genome_alignment/genome.fa bowtie_genome_alignment/bowtie_genome_index \
+	mkdir input/bowtie_genome_alignment
+	cp $GENOME input/bowtie_genome_alignment/genome.fa
+	bowtie-build input/bowtie_genome_alignment/genome.fa input/bowtie_genome_alignment/bowtie_genome_index \
 	 -p $THREADS --quiet
 	if [[ $? -ne 0 ]]; then error "bowtie rRNA index could not be build. Exiting..."; fi
 fi
 
 
-if [[ -s bowtie_genome_alignment/genome_alignment.sam ]]; then
+if [[ -s input/bowtie_genome_alignment/genome_alignment.sam ]]; then
 	comm "Looks like the rRNA alignment files aready exist in the output directory. Skipping..."
 else
 	comm "Aligning rRNA-filtered $READS1 to $GENOME with bowtie"
-	bowtie -v 2 -y -m 1 -a --best --strata -S -p $THREADS bowtie_genome_alignment/bowtie_genome_index bowtie_rRNA_alignment/rRNA_filtered_reads.fq bowtie_genome_alignment/genome_alignment.sam
+	bowtie -v 2 -y -m 1 -a --best --strata -S -p $THREADS input/bowtie_genome_alignment/bowtie_genome_index input/bowtie_rRNA_alignment/rRNA_filtered_reads.fq input/bowtie_genome_alignment/genome_alignment.sam
 	fi
 	if [[ $? -ne 0 ]]; then error "bowtie genome alignment failed. Exiting..."; fi
 
-mkdir alignment
-mv bowtie_genome_alignment/genome_alignment.sam alignment/${CREATOR}1_match.sam
+mkdir input/alignment
+mv input/bowtie_genome_alignment/genome_alignment.sam input/alignment/${CREATOR}1_match.sam
 mkdir FASTQ
-cp bowtie_rRNA_alignment/rRNA_filtered_reads.fq FASTQ/${CREATOR}1  
+cp input/bowtie_rRNA_alignment/rRNA_filtered_reads.fq input/FASTQ/${CREATOR}1  
 
 if [[ -s output/reads/density/density/DG1/minus ]]; then
 	comm "Looks like generating the density dictionary was already done. Skipping..."
 else
 	comm "Generating density dictionary from ${CREATOR}1_match.sam"
 
-	python density_wrapper.py FASTQ/ annotations/Volcanii.gff annotations/Volcanii_dict_for_pause alignment/ $CREATOR $MICROBE $MIN_LEN $MAX_LEN $THREADS $CORES
-	fi
-	comm "Succesfully generated density from ${CREATOR}1_match.sam."
-	if [[ $? -ne 0 ]]; then error "Failed to generate density from ${CREATOR}1_match.sam. Exiting..."; fi
-
-if [[ -s output/reads/density/density/DG1/minus ]]; then
-	comm "Looks like generating the density dictionary was already done. Skipping..."
-else
-	comm "Generating density dictionary from ${CREATOR}1_match.sam"
-
-	python density_wrapper.py FASTQ/ annotations/Volcanii.gff annotations/Volcanii_dict_for_pause alignment/ $CREATOR $MICROBE $MIN_LEN $MAX_LEN $THREADS $CORES
+	python density_wrapper.py input/FASTQ/ $ANNOTATION $DICTIONARY input/alignment/ $CREATOR $MICROBE $MIN_LEN $MAX_LEN $THREADS $CORES
 	fi
 	comm "Succesfully generated density from ${CREATOR}1_match.sam."
 	if [[ $? -ne 0 ]]; then error "Failed to generate density from ${CREATOR}1_match.sam. Exiting..."; fi
@@ -254,7 +245,7 @@ if [[ -s output/reads/analysis/individual/DG1/avggenes/start_all.csv ]]; then
 else
 	comm "Conducting meta-gene analysis on ribosome profiling density from ${CREATOR}1_match.sam"
 
-	python main_wrapper.py annotations/Volcanii_dict_for_pause $CREATOR $MICROBE $MIN_LEN $MAX_LEN $THREADS $CORES $LENGTH_UPSTREAM $LENGTH_DOWNSTREAM $ALIGNMENT_STYLE $DENSITY_STYLE $WEIGHT_STYLE $DISTANCE_GENES $RPKM_THRESHOLD $YMAX_AVGGENES $ASITE_SHIFT $PAUSE_STYLE $YMAX_PAUSE
+	python main_wrapper.py $DICTIONARY $CREATOR $MICROBE $MIN_LEN $MAX_LEN $THREADS $CORES $LENGTH_UPSTREAM $LENGTH_DOWNSTREAM $ALIGNMENT_STYLE $DENSITY_STYLE $WEIGHT_STYLE $DISTANCE_GENES $RPKM_THRESHOLD $YMAX_AVGGENES $ASITE_SHIFT $PAUSE_STYLE $YMAX_PAUSE
 	fi
 	comm "Succesfully carried out meta-gene analysis from ${CREATOR}1_match.sam."
 	if [[ $? -ne 0 ]]; then error "Failed to conduct meta-gene analysis on ${CREATOR}1_match.sam. Exiting..."; fi
