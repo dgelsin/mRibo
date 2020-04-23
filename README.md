@@ -6,8 +6,6 @@ To install locally:
 ```
 git clone https://github.com/dgelsin/mRibo
 ```
-mRibo can then be executed via ./mRibo/mRibo/bin/mRibo
-
 then to make it executable from anywhere:
 ```
 cp mRibo/mRibo/bin/* /usr/local/bin/
