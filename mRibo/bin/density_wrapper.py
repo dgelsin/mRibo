@@ -6,6 +6,8 @@ import ribo_analysis
 import ribo_plot
 import sys
 
+print   'density_wrapper.py [FASTQ_directory] [GFF_file.gff] [GFF_DICTIONARY_file] [ALIGNMENT_directory] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES]'
+
 creator=str(sys.argv[5])
 microbe=str(sys.argv[6])
 min_length=int(sys.argv[7])
