@@ -87,14 +87,12 @@ main_wrapper.py annotations/Volcanii_dict_for_pause DG Volcanii 10 40 8 4 50 200
 
 ### OUTPUT:
 
-output_directory_name/output/reads/
-
 4 figures are generated as output from mRibo. They can be found in output_directory_name/output/reads/figures/user_name/
 
-1. aa_pausescore* - a plot of pause scores for each amino acid at the A-site (large colored dot), P-site (gray dot), and E-site (black dot). Next are individual plots for each amino acid of read density along the length within ribosome footprints (top plot) with a heatmap underneath plotting footprint size (bottom plot). 
-2. asymmetry_score* - boxplot of asymettry score for the library used in the analysis.
-3. avggene* - meta-gene plots of ribosome density along ORFs (top plots). Underneath are heatmaps of ribosome footprint lengths and where they map along ORFs (bottom plots). The right plot corresponds to the start of ORFs where 0 is x nt upstream of the TSS (5' UTRs), set by the -lu option, and the TSS is marked by the number set by the -lu option. -ld option sets how far to plot downstream within ORFs. The left plot corresponds to the stop of ORFs where 0 is x nt upstream of the stop codon, set by the -ld option, and the stop codon is marked by the number set by the -ld option. -lu option sets how far to plot downstream of ORF stop codons (3' UTRs).
-4. Various plots of reading frame for all footprint lengths on average (left plot), each individual footprint (middle), and each gene (right plot). 0 corresponds to the 0t position in an in-frame ORF codon, 1 is +1 position, and 2 the +2 position.
+1. aa_pausescore*.pdf - a plot of pause scores for each amino acid at the A-site (large colored dot), P-site (gray dot), and E-site (black dot). Next are individual plots for each amino acid of read density along the length within ribosome footprints (top plot) with a heatmap underneath plotting footprint size (bottom plot). 
+2. asymmetry_score*.pdf - boxplot of asymettry score for the library used in the analysis.
+3. avggene*.pdf - meta-gene plots of ribosome density along ORFs (top plots). Underneath are heatmaps of ribosome footprint lengths and where they map along ORFs (bottom plots). The right plot corresponds to the start of ORFs where 0 is x nt upstream of the TSS (5' UTRs), set by the -lu option, and the TSS is marked by the number set by the -lu option. -ld option sets how far to plot downstream within ORFs. The left plot corresponds to the stop of ORFs where 0 is x nt upstream of the stop codon, set by the -ld option, and the stop codon is marked by the number set by the -ld option. -lu option sets how far to plot downstream of ORF stop codons (3' UTRs).
+4. frame*.pdf - Various plots of reading frame distribution for all footprint lengths on average (left plot), each individual footprint (middle), and each gene (right plot). 0 corresponds to the 0t position in an in-frame ORF codon, 1 is +1 position, and 2 the +2 position.
 
 Various data files are generated as output from mRibo for visualization and further analysis by the user.
 1. wig files for viewing ribosome density per nt on a genome viewer are provided in output_directory_name/output/reads/density/density/wigfiles/
