@@ -85,8 +85,25 @@ Example:
 main_wrapper.py annotations/Volcanii_dict_for_pause DG Volcanii 10 40 8 4 50 200 3 rpm yes 50 10 10 -11 aa 10
 ```
 
+### OUTPUT:
 
-### Acknowledgements:
+output_directory_name/output/reads/
+
+4 figures are generated as output from mRibo. They can be found in output_directory_name/output/reads/figures/user_name/
+
+1. aa_pausescore* - a plot of pause scores for each amino acid at the A-site (large colored dot), P-site (gray dot), and E-site (black dot). Next are individual plots for each amino acid of read density along the length within ribosome footprints (top plot) with a heatmap underneath plotting footprint size (bottom plot). 
+2. asymmetry_score* - boxplot of asymettry score for the library used in the analysis.
+3. avggene* - meta-gene plots of ribosome density along ORFs (top plots). Underneath are heatmaps of ribosome footprint lengths and where they map along ORFs (bottom plots). The right plot corresponds to the start of ORFs where 0 is x nt upstream of the TSS (5' UTRs), set by the -lu option, and the TSS is marked by the number set by the -lu option. -ld option sets how far to plot downstream within ORFs. The left plot corresponds to the stop of ORFs where 0 is x nt upstream of the stop codon, set by the -ld option, and the stop codon is marked by the number set by the -ld option. -lu option sets how far to plot downstream of ORF stop codons (3' UTRs).
+4. Various plots of reading frame for all footprint lengths on average (left plot), each individual footprint (middle), and each gene (right plot). 0 corresponds to the 0t position in an in-frame ORF codon, 1 is +1 position, and 2 the +2 position.
+
+Various data files are generated as output from mRibo for visualization and further analysis by the user.
+1. wig files for viewing ribosome density per nt on a genome viewer are provided in output_directory_name/output/reads/density/density/wigfiles/
+2. data used to generate avggene plots are provided in output_directory_name/output/reads/analysis/individual/user_name/avggenes/ for either the start of ORFs (start_all.csv) or stop of ORFs (stop_all.csv)
+3. pause score values tp generate aa_pausescore figures are provided in output_directory_name/output/reads/analysis/individual/user_name/pause_score/ for either amino acids (aa_scores.csv) or individual codons (codon_scores.csv). Pause scores are provided for the -1, -2, A, P, E, +1, and +2 sites of the ribosome in both csv files. aa_plot_values.csv contains pause scores for all amino acids along the length of ORFs.
+4. Expression values (rpkm) of genes are found in output_directory_name/output/reads/analysis/individual/user_name/*_genelist.csv
+
+
+### ACKNOWLEDGEMENTS:
 
 Author of pipeline: [Diego Rivera Gelsinger](https://github.com/dgelsin)
 
