@@ -113,6 +113,17 @@ while true; do
 		-X) MAX_LEN=$2; shift 2;;
 		-p) THREADS=$2; shift 2;;
 		-c) CORES=$2; shift 2;;
+		-lu) LENGTH_UPSTREAM=$2; shift 2;;
+		-ld) LENGTH_DOWNSTREAM=$2; shift 2;;
+		-m) ALIGNMENT_STYLE=$2; shift 2;;
+		-d) DENSITY_STYLE=$2; shift 2;;
+		-w) WEIGHT_STYLE=$2; shift 2;;
+		-dg) DISTANCE_GENES=$2; shift 2;;
+		-r) RPKM_THRESHOLD=$2; shift 2;;
+		-y) YMAX_AVGGENES=$2; shift 2;;
+		-s) ASITE_SHIFT=$2; shift 2;;
+		-P) PAUSE_STYLE=$2; shift 2;;
+		-Y) YMAX_PAUSE=$2; shift 2;;
                 -h | --help) help_message; exit 0; shift 1;;
 		-v | --version) echo mRibo v=${VERSION}; exit 0; shift 1;;
                 --) help_message; exit 1; shift; break ;;
