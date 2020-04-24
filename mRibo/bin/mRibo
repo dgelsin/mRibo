@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="v0.2"
+VERSION="v0.3"
 echo mRibo ${@}
 
 ##############################################################################################################################################################
@@ -24,7 +24,7 @@ help_message () {
 	echo "	-D INT		genome annotation dictionary file"
 	echo "	-C STR      	user name"
 	echo "	-M STR      	name of microbe being analyzed"
-	echo "  -o STR          output directory"
+	echo "  	-o STR          output directory"
 
 	echo ""
 	echo "Additional options:"
@@ -136,7 +136,7 @@ done
 ########################           MAKING SURE EVERYTHING IS SET UP             ########################
 ########################################################################################################
 # Check if all parameters are entered
-if [[ $READS1 == none ]] || [[ $GENOME == none ]] || [[ $RRNA == none ]] || [[ $ANNOTATION == none ]] || [[ $DICTIONARY == none ]] || [[ $CREATOR == none ]] || [[ $MICROBE == none ]] || [[ $OUT == none ]]; then 
+if [[ $READS1 == none ]] || [[ $GENOME == none ]] || [[ $RRNA == none ]] || [[ $ANNOTATION == none ]] || [[ $DICTIONARY == none ]] || [[ $OUT == none ]]; then 
 	comm "Some non-optional parameters (-U -g -R -D -C -M -o) were not entered"
 	help_message; exit 1
 elif [ ! -s $READS1 ]; then
@@ -149,10 +149,10 @@ elif [ ! -s $ANNOTATION ]; then
 	error "Annotation file $ANNOTATION does not exist, or is empty. Exiting."
 elif [ ! -s $DICTIONARY ]; then
 	error "Dictionary file $DICTIONARY does not exist, or is empty. Exiting."
-elif [ ! -s $CREATOR ]; then
-	error "User name $CREATOR format is incorrect, or is empty. Exiting."
-elif [ ! -s $MICROBE ]; then
-	error "Microbe name $MICROBE format is incorrect, or is empty. Exiting."
+#elif [ ! -s $CREATOR ]; then
+#	error "User name $CREATOR format is incorrect, or is empty. Exiting."
+#elif [ ! -s $MICROBE ]; then
+#	error "Microbe name $MICROBE format is incorrect, or is empty. Exiting."
 elif [ ! -s $OUT ]; then
 	error "Output directory is not specified. Exiting."
 fi
