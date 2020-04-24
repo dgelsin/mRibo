@@ -14,7 +14,7 @@ echo mRibo ${@}
 help_message () {
 	echo ""
 	echo "Example usage: "
-	echo "mRibo -U reads.fastq -R rRNA.fa -g genome.fa -a genome.gff -d genome_dict -C name_of_user -M name_of_microbe"
+	echo "mRibo -U reads.fastq -R rRNA.fa -g genome.fa -a genome.gff -D genome_dict -C name_of_user -M name_of_microbe -o output_directory_name"
 	echo ""
 	echo "mRibo core options:"
 	echo "	-U STR		ribosome profiling reads"
@@ -136,8 +136,8 @@ done
 ########################           MAKING SURE EVERYTHING IS SET UP             ########################
 ########################################################################################################
 # Check if all parameters are entered
-if [[ $READS1 == none ]] || [[ $GENOME == none ]] || [[ $RRNA == none ]] || [[ $ANNOTATION == none ]] || [[ $DICTIONARY == none ]]; then 
-	comm "Some non-optional parameters (-U -g -d) were not entered"
+if [[ $READS1 == none ]] || [[ $GENOME == none ]] || [[ $RRNA == none ]] || [[ $ANNOTATION == none ]] || [[ $DICTIONARY == none ]] [[ $CREATOR == none ]] [[ $MICROBE == none ]] [[ $OUT == none ]]; then 
+	comm "Some non-optional parameters (-U -g -R -D -C -M -o) were not entered"
 	help_message; exit 1
 elif [ ! -s $READS1 ]; then
 	error "Read file $READS1 does not exist, or is empty. Exiting."
@@ -149,12 +149,12 @@ elif [ ! -s $ANNOTATION ]; then
 	error "Annotation file $ANNOTATION does not exist, or is empty. Exiting."
 elif [ ! -s $DICTIONARY ]; then
 	error "Dictionary file $DICTIONARY does not exist, or is empty. Exiting."
-#elif [ ! -s $OUT ]; then
-#	error "Output directory is not specified. Exiting."
-#elif [ ! -s $CREATOR ]; then
-#	error "User name $CREATOR format is incorrect, or is empty. Exiting."
-#elif [ ! -s $MICROBE ]; then
-#	error "Microbe name $MICROBE format is incorrect, or is empty. Exiting."
+elif [ ! -s $CREATOR ]; then
+	error "User name $CREATOR format is incorrect, or is empty. Exiting."
+elif [ ! -s $MICROBE ]; then
+	error "Microbe name $MICROBE format is incorrect, or is empty. Exiting."
+elif [ ! -s $OUT ]; then
+	error "Output directory is not specified. Exiting."
 fi
 
 #if [[ $DATABASE == none ]]; then
@@ -177,7 +177,7 @@ mkdir input
 
 
 ########################################################################################################
-########################         ALIGN RNA READS TO GENOME WITH HISAT2          ########################
+######         FILTER RIBO READS FOR RRNA AND ALIGN RIBO READS TO GENOME WITH HISAT2          ##########
 ########################################################################################################
 announcement "ALIGN RNA READS TO rRNA WITH bowtie"
 
@@ -201,7 +201,7 @@ else
 fi
 
 
-if [[ -s input/bowtie_rRNA_alignment/bowtie_rRNA_index.1.ebwt ]]; then
+if [[ -s $OUT/input/bowtie_rRNA_alignment/bowtie_rRNA_index.1.ebwt ]]; then
 	comm "Looks like the bowtie rRNA index already exists in the output directory. Skipping..."
 else
 	comm "Building bowtie rRNA index"
@@ -212,7 +212,7 @@ else
 	if [[ $? -ne 0 ]]; then error "bowtie rRNA index could not be build. Exiting..."; fi
 fi
 
-if [[ -s input/bowtie_rRNA_alignment/rRNA_alignment.sam ]]; then
+if [[ -s $OUT/input/bowtie_rRNA_alignment/rRNA_alignment.sam ]]; then
 	comm "Looks like the rRNA alignment files aready exist in the output directory. Skipping..."
 else
 	comm "Aligning $READS1 to $RRNA with bowtie"
@@ -221,7 +221,7 @@ else
 	if [[ $? -ne 0 ]]; then error "bowtie rRNA alignment failed. Exiting..."; fi
 
 
-if [[ -s input/bowtie_genome_alignment/bowtie_genome_index.1.ebwt ]]; then
+if [[ -s $OUT/input/bowtie_genome_alignment/bowtie_genome_index.1.ebwt ]]; then
 	comm "Looks like the bowtie genome index already exists in the output directory. Skipping..."
 else
 	comm "Building bowtie genome index"
@@ -233,7 +233,7 @@ else
 fi
 
 
-if [[ -s input/bowtie_genome_alignment/genome_alignment.sam ]]; then
+if [[ -s $OUT/input/bowtie_genome_alignment/genome_alignment.sam ]]; then
 	comm "Looks like the rRNA alignment files aready exist in the output directory. Skipping..."
 else
 	comm "Aligning rRNA-filtered $READS1 to $GENOME with bowtie"
@@ -246,7 +246,11 @@ mv input/bowtie_genome_alignment/genome_alignment.sam input/alignment/${CREATOR}
 mkdir input/FASTQ
 cp input/bowtie_rRNA_alignment/rRNA_filtered_reads.fq input/FASTQ/${CREATOR}1  
 
-if [[ -s output/reads/density/density/DG1/minus ]]; then
+########################################################################################################
+##############         GENERATE DENSITY DICTIONARY FROM BOWTIE ALIGNMENT          ######################
+########################################################################################################
+
+if [[ -s $OUT/output/reads/density/density/DG1/minus ]]; then
 	comm "Looks like generating the density dictionary was already done. Skipping..."
 else
 	comm "Generating density dictionary from ${CREATOR}1_match.sam"
@@ -256,7 +260,11 @@ else
 	comm "Succesfully generated density from ${CREATOR}1_match.sam."
 	if [[ $? -ne 0 ]]; then error "Failed to generate density from ${CREATOR}1_match.sam. Exiting..."; fi
 
-if [[ -s output/reads/analysis/individual/DG1/avggenes/start_all.csv ]]; then
+########################################################################################################
+##############         CARRYOUT META-GENE ANALYSIS FROM DENSITY DICTIONARY           ###################
+########################################################################################################
+
+if [[ -s $OUT/output/reads/analysis/individual/DG1/avggenes/start_all.csv ]]; then
 	comm "Looks like meta-gene analysis was already done. Skipping..."
 else
 	comm "Conducting meta-gene analysis on ribosome profiling density from ${CREATOR}1_match.sam"
@@ -268,7 +276,8 @@ else
 
 mv output $OUT
 mv input $OUT
+
 ########################################################################################################
-########################     sRNA DISCOVERY PIPELINE SUCCESSFULLY FINISHED!!!   ########################
+#####################     META-GENE ANALYSIS PIPELINE SUCCESSFULLY FINISHED!!!   #######################
 ########################################################################################################
 announcement "mRibo META-GENE ANALYSIS FINISHED SUCCESSFULLY!"
