@@ -136,7 +136,7 @@ done
 ########################           MAKING SURE EVERYTHING IS SET UP             ########################
 ########################################################################################################
 # Check if all parameters are entered
-if [[ $READS1 == none ]] || [[ $GENOME == none ]] || [[ $RRNA == none ]] || [[ $ANNOTATION == none ]] || [[ $DICTIONARY == none ]] [[ $CREATOR == none ]] [[ $MICROBE == none ]] [[ $OUT == none ]]; then 
+if [[ $READS1 == none ]] || [[ $GENOME == none ]] || [[ $RRNA == none ]] || [[ $ANNOTATION == none ]] || [[ $DICTIONARY == none ]] || [[ $CREATOR == none ]] || [[ $MICROBE == none ]] || [[ $OUT == none ]]; then 
 	comm "Some non-optional parameters (-U -g -R -D -C -M -o) were not entered"
 	help_message; exit 1
 elif [ ! -s $READS1 ]; then
