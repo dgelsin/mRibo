@@ -55,7 +55,7 @@ Additional options:
 	-y INT		maximum value for y-axis of avggenes meta-gene plot (default=0)
 	-s INT		A-site shift value for pause score meta-gene analysis (default=-11)
 	-P STR		Style in which to conduct pause score meta-gene analysis, either amino acids (aa) or codons (codon) (default=aa)
-	-Y INT		maximum value for y-axis of pause score meta-gene plot (default=0)
+	-Y INT		maximum value for y-axis of pause score meta-gene plot (default=6)
 
 	--version | -v	show current mRibo version
 ```
