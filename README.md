@@ -38,7 +38,7 @@ mRibo core options:
 	-D INT		genome annotation dictionary file
 	-C STR      	user name
 	-M STR      	name of microbe being analyzed
-	-o STR          output directory
+	-o STR          output directory, do not name it "output"
 
 Additional options:
 	-I INT		min read length size for meta-gene analysis (default=10)
