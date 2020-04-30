@@ -113,4 +113,4 @@ Author of pipeline: [Diego Rivera Gelsinger](https://github.com/dgelsin)
 
 Institution: Johns Hopkins, [Department of Cell, Molecular, Developmental Biology, and Biophysics](https://cmdb.jhu.edu/)
 
-For general feedback you can contact me at [dgelsin1@jhu.edu](mailto:dgelsin1@jhu.edu). 
+For general feedback you can contact me at [dgelsin1@jhu.edu](mailto:dgelsin1@jhu.edu). For issues with mRibo please post it on the [Issues](https://github.com/dgelsin/mRibo/issues) tab of this github repository.  
