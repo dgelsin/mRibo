@@ -1,4 +1,4 @@
-# <div align="center"><ins><strong><em>*M*</em></strong></ins>icrobal <ins><strong><em>*Ribo*</em></strong></ins>some Profiling Analysis (<ins><strong><em>*mRibo*</em></strong></ins>) v0.3</div>
+# <div align="center"><ins><strong><em>*M*</em></strong></ins>icrobial <ins><strong><em>*Ribo*</em></strong></ins>some Profiling Analysis (<ins><strong><em>*mRibo*</em></strong></ins>) v0.3</div>
 Wrapper for running meta-gene analysis on microbial (Bacteria and Archaea) ribosome profiling data using modified scripts from [Dr. Fuad Mohammad](https://github.com/greenlabjhmi/2018_Bacterial_Pipeline_riboseq).
 
 ### INSTALLATION:
