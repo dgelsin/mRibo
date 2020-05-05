@@ -106,8 +106,8 @@ settings['next_codon']      = 'no'
 pausescore_analysis = ribo_analysis.pausescore(inputs, paths_out, settings, gff_dict, plus_dict, minus_dict)
 
 settings_plot['aa_or_codon'] = Pause_style 
-settings_plot['amino_acid']  = ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y']
-settings_plot['codon']       = ['ATG','GTG','TTG']
+settings_plot['amino_acid']  = [Amino_acid_names]
+settings_plot['codon']       = [Codon_names]
 
 settings_plot['ymax_dot']  = ymax_pause
 settings_plot['ymax_line'] = 6
