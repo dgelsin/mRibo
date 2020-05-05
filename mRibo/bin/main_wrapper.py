@@ -4,6 +4,7 @@ import ribo_util
 import ribo_main
 import ribo_analysis
 import ribo_plot
+import ribo_plot_with_legends
 import sys
 
 print   'main_wrapper.py [GFF_DICTIONARY_file] [NAME_OF_USER] [NAME_OF_MICROBE] [MIN_LEN] [MAX_LEN] [NUM_THREADS] [NUM_CORES] [LENGTH_UPSTREAM] [LENGTH_DOWNSTREAM] [ALIGNMENT_STYLE] [DENSITY_STYLE] [WEIGHT_STYLE] [DISTANCE_GENES] [RPKM_THRESHOLD] [YMAX_AVGGENES] [ASITE_SHIFT] [PAUSE_STYLE] [YMAX_PAUSE]'
@@ -115,3 +116,6 @@ plot_pausescore = ribo_plot.plot_pausescore(inputs, paths_in, paths_out, setting
 genelists = ribo_analysis.genelist(inputs, paths_out, settings, gff_dict, plus_dict, minus_dict)
 
 plot_pausescore = ribo_plot.plot_asymmetry_comp(inputs, paths_in, paths_out, settings)
+
+average_plot = ribo_plot_with_legends.plot_avggene(inputs, paths_in, paths_out, settings, settings_plot)
+plot_pausescore = ribo_plot_with_legends.plot_pausescore(inputs, paths_in, paths_out, settings, settings_plot)
