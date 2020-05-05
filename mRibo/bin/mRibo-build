@@ -1,0 +1,107 @@
+#!/bin/bash
+
+VERSION="v0.1"
+echo mRibo-build ${@}
+
+##############################################################################################################################################################
+# mRibo-build: Wrapper for building an annotation dictionary for subsequent metagene analysis on microbial (Bacteria and Archaea) ribosome profiling data
+##############################################################################################################################################################
+
+
+help_message () {
+	echo ""
+	echo "Example usage: "
+	echo "mRibo-build -a genome.gff -g genome.fa -C name_of_user -M name_of_microbe -o output_directory_name"
+	echo ""
+	echo "mRibo-build core options:"
+	echo "	-a STR		genome annotation gtf/gff file"
+	echo "	-g STR		genome fasta file"
+	echo "	-C STR      	user name"
+	echo "	-M STR      	name of microbe being analyzed"
+	echo "  	-o STR          output directory"
+	echo "	--version | -v	show current mRibo-build version"
+	echo "";}
+
+
+
+comm () { mribo_print_comment.py "$1" "-"; }
+error () { mribo_print_comment.py "$1" "*"; exit 1; }
+warning () { mribo_print_comment.py "$1" "*"; }
+announcement () { mribo_print_comment.py "$1" "#"; }
+
+# loading supplementary scripts
+MRIBO-BUILD_PATH=$(which mRibo-build)
+BIN_PATH=${MRIBO-BUILD_PATH%/*}
+
+
+########################################################################################################
+########################               LOADING IN THE PARAMETERS                ########################
+########################################################################################################
+
+
+# option defaults
+
+OUT=none
+ANNOTATION=none
+GENOME=none
+CREATOR=none
+MICROBE=none
+
+# load in params
+OPTS=`getopt -o hvt:U:R:a:g:D:C:M:o:I:X:p:c:lu:ld:m:d:w:dg:r:y:s:P:Y: --long help,version -- "$@"`
+# make sure the params are entered correctly
+if [ $? -ne 0 ]; then help_message; exit 1; fi
+
+# loop through input params
+while true; do
+        case "$1" in
+		-a) ANNOTATION=$2; shift 2;;
+		-g) GENOME=$2; shift 2;;
+		-C) CREATOR=$2; shift 2;;
+		-M) MICROBE=$2; shift 2;;
+		-o) OUT=$2; shift 2;;
+                -h | --help) help_message; exit 0; shift 1;;
+		-v | --version) echo mRibo v=${VERSION}; exit 0; shift 1;;
+                --) help_message; exit 1; shift; break ;;
+                *) break;;
+        esac
+done
+
+
+########################################################################################################
+########################           MAKING SURE EVERYTHING IS SET UP             ########################
+########################################################################################################
+# Check if all parameters are entered
+if [[ $ANNOTATION == none ]] || [[ $GENOME == none ]]; then 
+	comm "Some non-optional parameters (-U -g -R -D -C -M -o) were not entered"
+	help_message; exit 1
+elif [ ! -s $ANNOTATION ]; then
+	error "Annotation file $ANNOTATION does not exist, or is empty. Exiting."
+elif [ ! -s $GENOME ]; then
+	error "Genome file $GENOME does not exist, or is empty. Exiting."
+fi
+
+announcement "BEGIN BUILDING DICTIONARY!"
+comm "setting up output folders and copying relevant information..."
+mkdir $OUT
+
+
+########################################################################################################
+##############         GENERATE DENSITY DICTIONARY FROM BOWTIE ALIGNMENT          ######################
+########################################################################################################
+
+if [[ -s $OUT/$MICROBE_dictionary.csv ]]; then
+	comm "Looks like an annotation dictionary for ${MICROBE} has already been built. Skipping..."
+else
+	comm "Building dictionary from ${ANNOTATION}"
+
+	build_annotation_dictionary.py $ANNOTATION $GENOME $CREATOR $MICROBE $OUT
+	fi
+	comm "Succesfully built dictionary from ${ANNOTATION}"
+	if [[ $? -ne 0 ]]; then error "Failed to build dictionary from ${ANNOTATION}. Exiting..."; fi
+
+
+########################################################################################################
+#####################     META-GENE ANALYSIS PIPELINE SUCCESSFULLY FINISHED!!!   #######################
+########################################################################################################
+announcement "mRibo-build FINISHED SUCCESSFULLY!"
