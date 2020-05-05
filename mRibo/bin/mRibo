@@ -42,6 +42,8 @@ help_message () {
 	echo "	-y INT		maximum value for y-axis of avggenes meta-gene plot (default=$YMAX_AVGGENES)"
 	echo "	-s INT		A-site shift value for pause score meta-gene analysis (default=$ASITE_SHIFT)"
 	echo "	-P STR		Style in which to conduct pause score meta-gene analysis, either amino acids (aa) or codons (codon) (default=$PAUSE_STYLE)"
+	echo "	-aa STR		If plotting pause scores for amino acids (aa), indicate which amino acids to plot (default=$AMINO_ACIDS)"
+	echo "	-co STR		If plotting pause scores for codons (codon), indicate which codons to plot (default=$CODONS)"
 	echo "	-Y INT		maximum value for y-axis of pause score meta-gene plot (default=$YMAX_PAUSE)"
 	echo ""
 	echo "	--version | -v	show current mRibo version"
@@ -65,6 +67,8 @@ BIN_PATH=${MRIBO_PATH%/*}
 
 
 # option defaults
+AMINO_ACIDS=A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y
+CODONS=ATG,GTG,TTG
 MIN_LEN=10
 MAX_LEN=40
 THREADS=1
@@ -93,7 +97,7 @@ CREATOR=none
 MICROBE=none
 
 # load in params
-OPTS=`getopt -o hvt:U:R:g:a:D:C:M:o:I:X:p:c:lu:ld:m:d:w:dg:r:y:s:P:Y: --long help,version -- "$@"`
+OPTS=`getopt -o hvt:U:R:g:a:D:C:M:o:I:X:p:c:lu:ld:m:d:w:dg:r:y:s:P:aa:co:Y: --long help,version -- "$@"`
 # make sure the params are entered correctly
 if [ $? -ne 0 ]; then help_message; exit 1; fi
 
@@ -123,6 +127,8 @@ while true; do
 		-y) YMAX_AVGGENES=$2; shift 2;;
 		-s) ASITE_SHIFT=$2; shift 2;;
 		-P) PAUSE_STYLE=$2; shift 2;;
+		-aa) AMINO_ACIDS=$2; shift 2;;
+		-co) CODONS=$2; shift 2;;
 		-Y) YMAX_PAUSE=$2; shift 2;;
                 -h | --help) help_message; exit 0; shift 1;;
 		-v | --version) echo mRibo v=${VERSION}; exit 0; shift 1;;
@@ -269,7 +275,7 @@ if [[ -s $OUT/output/reads/analysis/individual/DG1/avggenes/start_all.csv ]]; th
 else
 	comm "Conducting meta-gene analysis on ribosome profiling density from ${CREATOR}1_match.sam"
 
-	main_wrapper.py $DICTIONARY $CREATOR $MICROBE $MIN_LEN $MAX_LEN $THREADS $CORES $LENGTH_UPSTREAM $LENGTH_DOWNSTREAM $ALIGNMENT_STYLE $DENSITY_STYLE $WEIGHT_STYLE $DISTANCE_GENES $RPKM_THRESHOLD $YMAX_AVGGENES $ASITE_SHIFT $PAUSE_STYLE $YMAX_PAUSE
+	main_wrapper.py $DICTIONARY $CREATOR $MICROBE $MIN_LEN $MAX_LEN $THREADS $CORES $LENGTH_UPSTREAM $LENGTH_DOWNSTREAM $ALIGNMENT_STYLE $DENSITY_STYLE $WEIGHT_STYLE $DISTANCE_GENES $RPKM_THRESHOLD $YMAX_AVGGENES $ASITE_SHIFT $PAUSE_STYLE $AMINO_ACIDS $CODONS $YMAX_PAUSE
 	fi
 	comm "Succesfully carried out meta-gene analysis from ${CREATOR}1_match.sam."
 	if [[ $? -ne 0 ]]; then error "Failed to conduct meta-gene analysis on ${CREATOR}1_match.sam. Exiting..."; fi
