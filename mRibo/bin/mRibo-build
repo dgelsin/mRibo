@@ -30,8 +30,8 @@ warning () { mribo_print_comment.py "$1" "*"; }
 announcement () { mribo_print_comment.py "$1" "#"; }
 
 # loading supplementary scripts
-MRIBO-BUILD_PATH=$(which mRibo-build)
-BIN_PATH=${MRIBO-BUILD_PATH%/*}
+MRIBOBUILD_PATH=$(which mRibo-build)
+BIN_PATH=${MRIBOBUILD_PATH%/*}
 
 
 ########################################################################################################
