@@ -553,8 +553,8 @@ def plot_pausescore(inputs, paths_in, paths_out, settings, settings_plot):
 
 
                 plt.subplot2grid((2,2 + aa_plots), (1,2 + plotnum), rowspan=1, colspan=1)
-                plot_3 = sns.heatmap(aa_HM_dict[aa], cmap = "ocean_r", vmin = 0, vmax = vmax_HM,
-                                     cbar=True, xticklabels=15, yticklabels=6)
+                plot_3 = sns.heatmap(aa_HM_dict[aa], cmap = "viridis", vmin = 0, vmax = vmax_HM,
+                                     cbar=False, xticklabels=15, yticklabels=6)
                 sns.despine(offset=5)
 
                 plotnum +=1
@@ -673,8 +673,8 @@ def plot_pausescore(inputs, paths_in, paths_out, settings, settings_plot):
 
 
                 plt.subplot2grid((2,7 + codon_plots), (1,7 + plotnum), rowspan=1, colspan=1)
-                plot_3 = sns.heatmap(codon_HM_dict[codon], cmap = "ocean_r", vmin = 0, vmax = vmax_HM,
-                                     cbar=True, xticklabels=15, yticklabels=6)
+                plot_3 = sns.heatmap(codon_HM_dict[codon], cmap = "viridis", vmin = 0, vmax = vmax_HM,
+                                     cbar=False, xticklabels=15, yticklabels=6)
                 sns.despine(offset=5)
 
                 plotnum +=1
