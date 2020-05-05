@@ -28,7 +28,7 @@ conda install bowtie
 
 ### GENERAL USAGE OF mRibo:
 ```
-mRibo -U reads.fastq -R rRNA.fa -g genome.fa -a genome.gff -d genome_dict -C name_of_user -M name_of_microbe -o output_directory_name
+mRibo -U reads.fastq -R rRNA.fa -g genome.fa -a genome.gff -D genome_dict -C name_of_user -M name_of_microbe -o output_directory_name
 
 mRibo core options:
 	-U STR		ribosome profiling reads
@@ -62,7 +62,7 @@ Additional options:
 
 Example:
 ```
-mRibo -U /Users/DRG/Desktop/mRibo/mRibo/practice_files/FASTQ/DG1_subsample -R /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/rRNA.fa -g /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/genome.fa -a /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii.gff -d /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii_dict_for_pause -C DG -M Volcanii -o mRibo_run1
+mRibo -U /Users/DRG/Desktop/mRibo/mRibo/practice_files/FASTQ/DG1_subsample -R /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/rRNA.fa -g /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/genome.fa -a /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii.gff -D /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii_dict_for_pause -C DG -M Volcanii -o mRibo_run1
 ```
 
 ### BUILDING AN ANNOTATION DICTIONARY FOR mRibo:
