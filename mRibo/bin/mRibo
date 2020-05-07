@@ -42,8 +42,6 @@ help_message () {
 	echo "	-y INT		maximum value for y-axis of avggenes meta-gene plot (default=$YMAX_AVGGENES)"
 	echo "	-s INT		A-site shift value for pause score meta-gene analysis (default=$ASITE_SHIFT)"
 	echo "	-P STR		Style in which to conduct pause score meta-gene analysis, either amino acids (aa) or codons (codon) (default=$PAUSE_STYLE)"
-	echo "	-aa STR		If plotting pause scores for amino acids (aa), indicate which amino acids to plot (default=$AMINO_ACIDS)"
-	echo "	-co STR		If plotting pause scores for codons (codon), indicate which codons to plot (default=$CODONS)"
 	echo "	-Y INT		maximum value for y-axis of pause score meta-gene plot (default=$YMAX_PAUSE)"
 	echo ""
 	echo "	--version | -v	show current mRibo version"
