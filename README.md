@@ -1,4 +1,4 @@
-# <div align="center"><ins><strong><em>*M*</em></strong></ins>icrobial <ins><strong><em>*Ribo*</em></strong></ins>some Profiling Analysis (<ins><strong><em>*mRibo*</em></strong></ins>) v0.3</div>
+# <div align="center"><ins><strong><em>*M*</em></strong></ins>icrobial <ins><strong><em>*Ribo*</em></strong></ins>some Profiling Analysis (<ins><strong><em>*mRibo*</em></strong></ins>) v0.4 (05/07/2020)</div>
 Wrapper for running meta-gene analysis on microbial (Bacteria and Archaea) ribosome profiling data using modified scripts from [Dr. Fuad Mohammad](https://github.com/greenlabjhmi/2018_Bacterial_Pipeline_riboseq).
 
 ### INSTALLATION:
@@ -62,7 +62,7 @@ Additional options:
 
 Example:
 ```
-mRibo -U /Users/DRG/Desktop/mRibo/mRibo/practice_files/FASTQ/DG1_subsample -R /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/rRNA.fa -g /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/genome.fa -a /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii.gff -D /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii_dict_for_pause -C DG -M Volcanii -o mRibo_run1
+mRibo -U mRibo/mRibo/practice_files/FASTQ/practice.fq -R /Users/DRG/Desktop/mRibo/mRibo/practice_files/genomes/rRNA.fa -g mRibo/mRibo/practice_files/genomes/genome.fa -a /Users/DRG/Desktop/mRibo/mRibo/annotations/Volcanii.gff -D mRibo/mRibo/annotations/Volcanii_dict_for_pause -C DG -M Volcanii -o mRibo_run1
 ```
 
 ### BUILDING AN ANNOTATION DICTIONARY FOR mRibo:
@@ -105,9 +105,9 @@ In the input/ directory you will find a .sam bowtie alignment to the genome in t
 
 4 figures are generated as output from mRibo. They can be found in output_directory_name/output/reads/figures/user_name/
 
-1. **aa_pausescore_.pdf** - a plot of pause scores for each amino acid at the A-site (large colored dot), P-site (gray dot), and E-site (black dot). Next are individual plots for each amino acid of read density along the length within ribosome footprints (top plot) with a heatmap underneath plotting footprint size (bottom plot). 
+1. **aa_pausescore_.pdf** - a plot of pause scores for each amino acid at the A-site (large colored dot), P-site (gray dot), and E-site (black dot). Next are individual plots for each amino acid of read density along the length within ribosome footprints (top plot) with a heatmap underneath plotting footprint size (bottom plot). Alternatively, if -P is set to codon, this will plot individual codons instead.
 2. **asymmetry_score_.pdf** - boxplot of asymettry score for the library used in the analysis.
-3. **avggene_.pdf** - meta-gene plots of ribosome density along ORFs (top plots). Underneath are heatmaps of ribosome footprint lengths and where they map along ORFs (bottom plots). The right plot corresponds to the start of ORFs where 0 is x nt upstream of the TSS (5' UTRs), set by the -lu option, and the TSS is marked by the number set by the -lu option. -ld option sets how far to plot downstream within ORFs. The left plot corresponds to the stop of ORFs where 0 is x nt upstream of the stop codon, set by the -ld option, and the stop codon is marked by the number set by the -ld option. -lu option sets how far to plot downstream of ORF stop codons (3' UTRs).
+3. **avggene_.pdf** - meta-gene plots of ribosome density along ORFs (top plots). Underneath are heatmaps of ribosome footprint lengths and where they map along ORFs (bottom plots). The right plot corresponds to the start of ORFs where 0 is x nt upstream of the TSS (5' UTRs), set by the -lu option, and the TSS is marked by the number set by the -lu option. -ld option sets how far to plot downstream within ORFs. The left plot corresponds to the stop of ORFs where 0 is x nt upstream of the stop codon, set by the -ld option, and the stop codon is marked by the number set by the -ld option. -lu option sets how far to plot downstream of ORF stop codons (3' UTRs). The same plot but with a legend (scale) for the heatmap is provided as a second pdf.
 4. **frame_.pdf** - Various plots of reading frame distribution for all footprint lengths on average (left plot), each individual footprint (middle), and each gene (right plot). 0 corresponds to the 0t position in an in-frame ORF codon, 1 is +1 position, and 2 the +2 position.
 
 Various data files are generated as output from mRibo for visualization and further analysis by the user.
@@ -120,6 +120,7 @@ Various data files are generated as output from mRibo for visualization and furt
 ### ACKNOWLEDGEMENTS:
 
 Author of pipeline: [Diego Rivera Gelsinger](https://github.com/dgelsin)
+Principal investigator: [Jocelyne DiRugierro](https://bio.jhu.edu/directory/jocelyne-diruggiero/)
 
 Institution: Johns Hopkins, [Department of Cell, Molecular, Developmental Biology, and Biophysics](https://cmdb.jhu.edu/)
 
