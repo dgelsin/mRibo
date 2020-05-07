@@ -25,9 +25,7 @@ rpkm_threshold=int(sys.argv[14])
 ymax_avggenes=int(sys.argv[15])
 A_site_shift=int(sys.argv[16])
 Pause_style=str(sys.argv[17])
-Amino_acid_names=str(sys.argv[18])
-Codon_names=str(sys.argv[19])
-ymax_pause=int(sys.argv[20])
+ymax_pause=int(sys.argv[18])
 
 library_creator = creator        #FM, KS, CW, Menkin, Li, etc...
 organism        = microbe      #Coli, Subtilis, Tuberculosis, Salmonella etc...
@@ -106,8 +104,8 @@ settings['next_codon']      = 'no'
 pausescore_analysis = ribo_analysis.pausescore(inputs, paths_out, settings, gff_dict, plus_dict, minus_dict)
 
 settings_plot['aa_or_codon'] = Pause_style 
-settings_plot['amino_acid']  = [Amino_acid_names]
-settings_plot['codon']       = [Codon_names]
+settings_plot['amino_acid']  = ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y']
+settings_plot['codon']       = ['GCT','GCC','GCA','GCG','TGT','TGC','GAT','GAC','GAA','GAG','TTT','TTC','GGT','GGC','GGA','GGG','CAT','CAC','ATT','ATC','ATA','AAA','AAG','TTA','TTG','CTT','CTC','CTA','CTG','ATG','GTG','TTG','AAT','AAC','CCT','CCC','CCA','CCG','CAA','CAG','CGT','CGC','CGA','CGG','AGA','AGG','TCT','TCC','TCA','TCG','AGT','AGC','ACT','ACC','ACA','ACG','GTT','GTC','GTA','GTG','TGG','TAT','TAC']
 
 settings_plot['ymax_dot']  = ymax_pause
 settings_plot['ymax_line'] = 6

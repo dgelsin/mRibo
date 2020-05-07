@@ -67,8 +67,8 @@ BIN_PATH=${MRIBO_PATH%/*}
 
 
 # option defaults
-AMINO_ACIDS=A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y
-CODONS=ATG,GTG,TTG
+#AMINO_ACIDS=A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y
+#CODONS=ATG,GTG,TTG
 MIN_LEN=10
 MAX_LEN=40
 THREADS=1
@@ -275,7 +275,7 @@ if [[ -s $OUT/output/reads/analysis/individual/DG1/avggenes/start_all.csv ]]; th
 else
 	comm "Conducting meta-gene analysis on ribosome profiling density from ${CREATOR}1_match.sam"
 
-	main_wrapper.py $DICTIONARY $CREATOR $MICROBE $MIN_LEN $MAX_LEN $THREADS $CORES $LENGTH_UPSTREAM $LENGTH_DOWNSTREAM $ALIGNMENT_STYLE $DENSITY_STYLE $WEIGHT_STYLE $DISTANCE_GENES $RPKM_THRESHOLD $YMAX_AVGGENES $ASITE_SHIFT $PAUSE_STYLE $AMINO_ACIDS $CODONS $YMAX_PAUSE
+	main_wrapper.py $DICTIONARY $CREATOR $MICROBE $MIN_LEN $MAX_LEN $THREADS $CORES $LENGTH_UPSTREAM $LENGTH_DOWNSTREAM $ALIGNMENT_STYLE $DENSITY_STYLE $WEIGHT_STYLE $DISTANCE_GENES $RPKM_THRESHOLD $YMAX_AVGGENES $ASITE_SHIFT $PAUSE_STYLE $YMAX_PAUSE
 	fi
 	comm "Succesfully carried out meta-gene analysis from ${CREATOR}1_match.sam."
 	if [[ $? -ne 0 ]]; then error "Failed to conduct meta-gene analysis on ${CREATOR}1_match.sam. Exiting..."; fi
