@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="v0.1"
+VERSION="v0.2"
 echo mRibo-build ${@}
 
 ##############################################################################################################################################################
@@ -85,23 +85,29 @@ announcement "BEGIN BUILDING DICTIONARY!"
 comm "setting up output folders and copying relevant information..."
 mkdir $OUT
 
+###############################################################################################
+##############         FORMAT GFF WITH FASTA TO BUILD DICTIONARY          #####################
+###############################################################################################
+echo "###" >> $ANNOTATION
+echo "##FASTA" >> $ANNOTATION
+cat $ANNOTATION $GENOME > $OUT/mribo_edit.gff
 
-########################################################################################################
-##############         GENERATE DENSITY DICTIONARY FROM BOWTIE ALIGNMENT          ######################
-########################################################################################################
+###############################################################################################
+##############         BUILD ANNOTATION DICTIONARY FROM NEW GFF          ######################
+###############################################################################################
 
 if [[ -s $OUT/$MICROBE_dictionary.csv ]]; then
 	comm "Looks like an annotation dictionary for ${MICROBE} has already been built. Skipping..."
 else
 	comm "Building dictionary from ${ANNOTATION}"
 
-	build_annotation_dictionary.py $ANNOTATION $GENOME $CREATOR $MICROBE $OUT
+	build_annotation_dictionary.v2.py $OUT/mribo_edit.gff $GENOME $CREATOR $MICROBE $OUT
 	fi
 	comm "Succesfully built dictionary from ${ANNOTATION}"
 	if [[ $? -ne 0 ]]; then error "Failed to build dictionary from ${ANNOTATION}. Exiting..."; fi
 
 
 ########################################################################################################
-#####################     META-GENE ANALYSIS PIPELINE SUCCESSFULLY FINISHED!!!   #######################
+###############     BUILDING AN ANNOTATION DICTIONARY SUCCESSFULLY FINISHED!!!   #######################
 ########################################################################################################
 announcement "mRibo-build FINISHED SUCCESSFULLY!"
