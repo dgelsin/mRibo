@@ -120,7 +120,8 @@ Various data files are generated as output from mRibo for visualization and furt
 ### ACKNOWLEDGEMENTS:
 
 Author of pipeline: [Diego Rivera Gelsinger](https://github.com/dgelsin)
-Principal investigator: [Jocelyne DiRugierro](https://bio.jhu.edu/directory/jocelyne-diruggiero/)
+
+Principal investigators: [Jocelyne DiRugierro](https://bio.jhu.edu/directory/jocelyne-diruggiero/) & [Allen Buskirk](https://greenlabjhmi.org/the-buskirk-group)
 
 Institution: Johns Hopkins, [Department of Cell, Molecular, Developmental Biology, and Biophysics](https://cmdb.jhu.edu/)
 
