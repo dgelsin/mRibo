@@ -125,4 +125,6 @@ Principal investigators: [Jocelyne DiRugierro](https://bio.jhu.edu/directory/joc
 
 Institution: Johns Hopkins, [Department of Cell, Molecular, Developmental Biology, and Biophysics](https://cmdb.jhu.edu/)
 
+Citation: If mRibo helped you in an analysis for a paper, please cite me - Diego Rivera Gelsinger, Emma Dallon, Rahul Reddy, Fuad Mohammad, Allen R Buskirk, Jocelyne DiRuggiero, Ribosome profiling in archaea reveals leaderless translation, novel translational initiation sites, and ribosome pausing at single codon resolution, Nucleic Acids Research, Volume 48, Issue 10, 04 June 2020, Pages 5201–5216, https://doi.org/10.1093/nar/gkaa304
+
 For general feedback you can contact me at [dgelsin1@jhu.edu](mailto:dgelsin1@jhu.edu). For issues with mRibo please post it on the [Issues](https://github.com/dgelsin/mRibo/issues) tab of this github repository.  
