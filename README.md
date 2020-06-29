@@ -116,6 +116,16 @@ Various data files are generated as output from mRibo for visualization and furt
 3. pause score values tp generate aa_pausescore figures are provided in output_directory_name/output/reads/analysis/individual/user_name/pause_score/ for either amino acids (**aa_scores.csv**) or individual codons (**codon_scores.csv**). Pause scores are provided for the -1, -2, A, P, E, +1, and +2 sites of the ribosome in both csv files. **aa_plot_values.csv** contains pause scores for all amino acids along the length of ORFs.
 4. Expression values (rpkm) of genes are found in output_directory_name/output/reads/analysis/individual/user_name/***_genelist.csv**
 
+### CITATION
+If mRibo helped you in an analysis for a paper, please cite my [NAR paper](https://academic.oup.com/nar/article/48/10/5201/5831753) for the wrapper tool:
+
+*Gelsinger DR, Dallon E, Reddy R, Mohammad F, Buskirk AR, DiRuggiero J. Ribosome profiling in archaea reveals leaderless translation, novel translational initiation sites, and ribosome pausing at single codon resolution. Nucleic Acids Research. Volume 48, Issue 10, 04 June 2020, Pages 5201–5216, https://doi.org/10.1093/nar/gkaa304*
+
+and Dr. Fuad Mohammad's [Elife paper](https://elifesciences.org/articles/42591) for the core python scripts:
+
+*Mohammad F, Green R, Buskirk AR. A systematically-revised ribosome profiling method for bacteria reveals pauses at single-codon resolution. Elife. 2019;8:e42591. Published 2019 Feb 6. doi:10.7554/eLife.42591*
+
+I recommend citing any other tools used in this program as well (i.e. bowtie).
 
 ### ACKNOWLEDGEMENTS:
 
@@ -125,6 +135,4 @@ Principal investigators: [Jocelyne DiRugierro](https://bio.jhu.edu/directory/joc
 
 Institution: Johns Hopkins, [Department of Cell, Molecular, Developmental Biology, and Biophysics](https://cmdb.jhu.edu/)
 
-Citation: If mRibo helped you in an analysis for a paper, please cite me - Diego Rivera Gelsinger, Emma Dallon, Rahul Reddy, Fuad Mohammad, Allen R Buskirk, Jocelyne DiRuggiero, Ribosome profiling in archaea reveals leaderless translation, novel translational initiation sites, and ribosome pausing at single codon resolution, Nucleic Acids Research, Volume 48, Issue 10, 04 June 2020, Pages 5201–5216, https://doi.org/10.1093/nar/gkaa304
-
-For general feedback you can contact me at [dgelsin1@jhu.edu](mailto:dgelsin1@jhu.edu). For issues with mRibo please post it on the [Issues](https://github.com/dgelsin/mRibo/issues) tab of this github repository.  
+For general feedback you can contact me at [dgelsin1@jhu.edu](mailto:dgelsin1@jhu.edu). For issues with mRibo please post it on the [Issues](https://github.com/dgelsin/mRibo/issues) tab of this github repository. Please include the mRibo version number, the entire command and options you inputted as a user, and the full stdout error.  
