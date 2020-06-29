@@ -118,14 +118,12 @@ Various data files are generated as output from mRibo for visualization and furt
 
 ### CITATION
 If mRibo helped you in an analysis for a paper, please cite my [NAR paper](https://academic.oup.com/nar/article/48/10/5201/5831753) for the wrapper tool:
-
 *Gelsinger DR, Dallon E, Reddy R, Mohammad F, Buskirk AR, DiRuggiero J. Ribosome profiling in archaea reveals leaderless translation, novel translational initiation sites, and ribosome pausing at single codon resolution. Nucleic Acids Research. Volume 48, Issue 10, 04 June 2020, Pages 5201–5216, https://doi.org/10.1093/nar/gkaa304*
 
 and Dr. Fuad Mohammad's [Elife paper](https://elifesciences.org/articles/42591) for the core python scripts:
-
 *Mohammad F, Green R, Buskirk AR. A systematically-revised ribosome profiling method for bacteria reveals pauses at single-codon resolution. Elife. 2019;8:e42591. Published 2019 Feb 6. doi:10.7554/eLife.42591*
 
-I recommend citing any other tools used in this program as well (i.e. bowtie).
+I also recommend citing any other tools used in this program as well (i.e. bowtie).
 
 ### ACKNOWLEDGEMENTS:
 
